@@ -15,6 +15,8 @@ jobs:
           OWNER: "canmet-energy"  # Replace with your GitHub username
           REPO: "hpxml"  # Replace with your fork's repo name
         run: |
+          echo "Syncing started at $(date)"
+          
           # Get all branches from the forked repository
           branches=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" \
           -H "Accept: application/vnd.github+json" \
@@ -22,9 +24,12 @@ jobs:
 
           # Loop through each branch and sync with upstream
           for branch in $branches; do
-            echo "Syncing branch: $branch"
+            echo "Syncing branch: $branch at $(date)"
             curl -X POST -H "Authorization: token ${GITHUB_TOKEN}" \
             -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/${OWNER}/${REPO}/merge-upstream" \
             -d "{\"branch\":\"${branch}\"}"
+            echo "Completed syncing branch: $branch at $(date)"
           done
+
+           echo "Syncing finished at $(date)"
