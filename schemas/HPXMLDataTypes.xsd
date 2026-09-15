@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hpxmlonline.com/2023/09" targetNamespace="http://hpxmlonline.com/2023/09" elementFormDefault="qualified" version="4.2">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://hpxmlonline.com/2025/12" targetNamespace="http://hpxmlonline.com/2025/12" elementFormDefault="qualified" version="5.0">
 	<xs:simpleType name="DataSource">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="user"/>
@@ -81,9 +81,7 @@
 	</xs:complexType>
 	<xs:simpleType name="schemaVersionType">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="4.0"/>
-			<xs:enumeration value="4.1"/>
-			<xs:enumeration value="4.2"/>
+			<xs:enumeration value="5.0"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--Address Information Below-->
@@ -2343,6 +2341,8 @@
 			<xs:enumeration value="other interior"/>
 			<xs:enumeration value="other multifamily buffer space"/>
 			<xs:enumeration value="other non-freezing space"/>
+			<xs:enumeration value="outdoor closet"/>
+			<xs:enumeration value="outside"/>
 			<xs:enumeration value="roof deck"/>
 			<xs:enumeration value="unconditioned space"/>
 		</xs:restriction>
@@ -3647,7 +3647,7 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	<xs:simpleType name="RoofType_simple">
+	<xs:simpleType name="RoofMaterial_simple">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="shingles"/>
 			<xs:enumeration value="slate or tile shingles"/>
@@ -3656,15 +3656,15 @@
 			<xs:enumeration value="metal surfacing"/>
 			<xs:enumeration value="expanded polystyrene sheathing"/>
 			<xs:enumeration value="plastic/rubber/synthetic sheeting"/>
-			<xs:enumeration value="concrete"/>
+			<xs:enumeration value="concrete tiles"/>
 			<xs:enumeration value="green roof"/>
 			<xs:enumeration value="no one major type"/>
 			<xs:enumeration value="other"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:complexType name="RoofType">
+	<xs:complexType name="RoofMaterial">
 		<xs:simpleContent>
-			<xs:extension base="RoofType_simple">
+			<xs:extension base="RoofMaterial_simple">
 				<xs:attribute name="dataSource" type="DataSource"/>
 			</xs:extension>
 		</xs:simpleContent>
